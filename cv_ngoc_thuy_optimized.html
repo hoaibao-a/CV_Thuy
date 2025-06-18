@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Nguyễn Thị Ngọc Thuý</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            font-size: 12px;
+        }
+
+        .cv-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            min-height: 297mm;
+            page-break-inside: avoid;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            page-break-inside: avoid;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            font-size: 13px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 0;
+            min-height: calc(297mm - 200px);
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-right: 2px solid #e9ecef;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            border-radius: 1px;
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 11px;
+        }
+
+        .goals {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 15px;
+        }
+
+        .goal-item {
+            margin-bottom: 12px;
+            font-size: 11px;
+        }
+
+        .goal-label {
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .experience-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            page-break-inside: avoid;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 13px;
+        }
+
+        .company {
+            color: #7f8c8d;
+            margin-top: 3px;
+            font-size: 11px;
+        }
+
+        .duration {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.5;
+            font-size: 11px;
+        }
+
+        .job-description ul {
+            margin-left: 15px;
+            margin-top: 8px;
+        }
+
+        .job-description li {
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .job-description li::marker {
+            color: #e74c3c;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 3px 3px 3px 0;
+            font-size: 10px;
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .education-title {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .education-details {
+            opacity: 0.9;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .strengths-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .strength-item {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 11px;
+            box-shadow: 0 3px 10px rgba(243, 156, 18, 0.4);
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item {
+                break-inside: avoid;
+            }
+            
+            .section {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <img src="profile_avatar.png" alt="Nguyễn Thị Ngọc Thuý" class="profile-photo">
+            <div class="header-content">
+                <h1 class="name">Nguyễn Thị Ngọc Thuý</h1>
+                <p class="title">Graphic Designer • UI/UX Designer • Creative Professional</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>ngocthuydesign1012@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>0908 875 706</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Giới thiệu</h2>
+                    <div class="intro-text">
+                        Xin chào! Tôi là Ngọc Thuý, nghệ danh Thuý Nguyệt. Một người có niềm đam mê với sự sáng tạo và màu sắc. Chuyên ngành Thiết kế đồ họa đã mang cho tôi nhiều trải nghiệm đẹp về cách nhìn nhận cái đẹp theo cá tính riêng.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+                    <div class="goals">
+                        <div class="goal-item">
+                            <span class="goal-label">Ngắn hạn:</span>
+                            Trở thành nhà thiết kế đồ họa chuyên nghiệp, nâng cao kỹ năng thiết kế với các công cụ như Photoshop, Illustrator và Figma.
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-label">Dài hạn:</span>
+                            Phát triển thành một Senior Designer, có khả năng quản lý các dự án thiết kế lớn và xây dựng thương hiệu hiệu quả cho doanh nghiệp.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Kỹ năng</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Công cụ thiết kế</h4>
+                            <div class="skill-item">Photoshop</div>
+                            <div class="skill-item">Illustrator</div>
+                            <div class="skill-item">Figma</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Chuyên môn</h4>
+                            <div class="skill-item">Typography</div>
+                            <div class="skill-item">Color Theory</div>
+                            <div class="skill-item">Layout Design</div>
+                            <div class="skill-item">Brand Identity</div>
+                            <div class="skill-item">UI Design</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Học vấn</h2>
+                    <div class="education-item">
+                        <div class="education-title">Đại học Công nghệ HUTECH</div>
+                        <div class="education-details">
+                            Chuyên ngành: Thiết kế Đồ họa<br>
+                            Thời gian: 2019 - 2023<br>
+                            Xếp loại: Khá
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Điểm mạnh</h2>
+                    <div class="strengths-list">
+                        <div class="strength-item">Kỹ năng giao tiếp</div>
+                        <div class="strength-item">Làm việc nhóm</div>
+                        <div class="strength-item">Quản lý thời gian</div>
+                        <div class="strength-item">Giải quyết vấn đề</div>
+                        <div class="strength-item">Sáng tạo & Linh hoạt</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Kinh nghiệm làm việc</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Graphic Designer</div>
+                                <div class="company">CÔNG TY TNHH TRUYỀN THÔNG & GIẢI PHÁP BING AGENCY</div>
+                            </div>
+                            <div class="duration">10/2023 - 11/2024</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Thiết kế hình ảnh cho các thương hiệu thẩm mỹ: Thiên Thuỷ Spa, Lê Nguyên, Thuỷ Spa, Nhi Beauty</li>
+                                <li>Thiết kế bao bì sản phẩm son dưỡng Hà Anh và các dụng cụ y khoa Quang Châu</li>
+                                <li>Phát triển hình ảnh thương hiệu cho Mélis Academy, Anna Thai Massage, Garden Spa</li>
+                                <li>Thiết kế giao diện và hình ảnh marketing cho FaceDaily và Bing Agency</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Graphic Designer</div>
+                                <div class="company">Công ty Tổ Hợp Xúc Tiến Thương Mại E-EXPO</div>
+                            </div>
+                            <div class="duration">07/2023 - 09/2023</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Thiết kế hình ảnh fanpage và website cho các dự án thương mại điện tử</li>
+                                <li>Tạo nội dung visual cho các nền tảng Shopee, Lazada và TikTok Live Stream</li>
+                                <li>Phối hợp với team content để tối ưu hóa hiệu quả truyền thông</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Graphic Designer</div>
+                                <div class="company">Công ty TNHH Truyền Thông & Quảng cáo Your Media</div>
+                            </div>
+                            <div class="duration">06/2022 - 05/2023</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Thiết kế hình ảnh fanpage cho nhiều thương hiệu: Ruby & Health, Ruby Yoga, AI Dental Lab</li>
+                                <li>Phát triển visual identity cho Chez Dental Clinic và Millennium IVF Bangkok</li>
+                                <li>Thiết kế hình ảnh SEO và marketing cho Earthlyglow</li>
+                                <li>Tạo nội dung visual cho sản phẩm kẹo Hamac Lollipop</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Graphic Designer</div>
+                                <div class="company">Cty Thẩm Mỹ Viện Mailisa Group</div>
+                            </div>
+                            <div class="duration">04/2022 - 05/2022</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Retouch hình ảnh thẩm mỹ chuyên nghiệp</li>
+                                <li>Thiết kế hình ảnh fanpage cho Thẩm mỹ viện VIOLA và Mắt Ngọc</li>
+                                <li>Tạo nội dung marketing phù hợp với lĩnh vực làm đẹp</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Freelance Designer</div>
+                                <div class="company">Dự án cá nhân</div>
+                            </div>
+                            <div class="duration">07/2021 - Hiện tại</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Thiết kế logo và poster/GDN cho công ty Leadup</li>
+                                <li>Phát triển hình ảnh thương hiệu cho công ty vật liệu chỉnh nha Phát Đạt</li>
+                                <li>Thiết kế UI cho các dự án về bóng đá và tài chính</li>
+                                <li>Tạo nội dung visual cho website SEO và fanpage marketing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
+

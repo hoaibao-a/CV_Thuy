@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/cv_ngoc_thuy_optimized.html" }
+  ]
+}
